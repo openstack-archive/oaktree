@@ -1,0 +1,7 @@
+[run]
+branch = True
+source = oaktree
+omit = oaktree/openstack/*
+
+[report]
+ignore_errors = True
