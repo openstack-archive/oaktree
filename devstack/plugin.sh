@@ -40,10 +40,10 @@ function install_oaktreemodel {
         mkdir $GOPATH
         export PATH=$GOPATH/bin:$PATH
         go get -u github.com/golang/protobuf/protoc-gen-go
+        sudo pip install grpcio grpcio-tools
         ./bootstrap.sh
         ./configure
         make
-        sudo make install
         sudo pip install -e .
         popd
     fi
@@ -51,13 +51,14 @@ function install_oaktreemodel {
 
 # Install oaktree code
 function install_oaktree {
-    if use_library_from_git "oaktree"; then
-        GITREPO["oaktree"]=$OAKTREE_REPO_URL
-        GITDIR["oaktree"]=$DEST/shade
-        GITBRANCH["oaktree"]=$OAKTREE_REPO_REF
-        git_clone_by_name "oaktree"
-        setup_dev_lib "oaktree"
-    fi
+    # TODO(mordred) remove these comments when project-config job is fixed
+    #if use_library_from_git "oaktree"; then
+    GITREPO["oaktree"]=$OAKTREE_REPO_URL
+    GITDIR["oaktree"]=$DEST/oaktree
+    GITBRANCH["oaktree"]=$OAKTREE_REPO_REF
+    git_clone_by_name "oaktree"
+    setup_dev_lib "oaktree"
+    #fi
 }
 
 function configure_oaktree {
@@ -92,6 +93,8 @@ if is_service_enabled oaktree; then
     if [[ "$1" == "stack" && "$2" == "install" ]]; then
         # Perform installation of service source
         echo_summary "Installing oaktree"
+        install_shade
+        install_oaktreemodel
         install_oaktree
 
     elif [[ "$1" == "stack" && "$2" == "post-config" ]]; then
