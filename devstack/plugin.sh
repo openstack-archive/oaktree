@@ -22,8 +22,6 @@ function install_shade {
         GITDIR["shade"]=$DEST/shade
         GITBRANCH["shade"]=$SHADE_REPO_REF
         git_clone_by_name "shade"
-        # Install shade globally, because the job config has LIBS_FROM_GIT
-        # and if we don't install it globally, all hell breaks loose
         setup_dev_lib "shade"
     fi
 }
@@ -40,10 +38,10 @@ function install_oaktreemodel {
         mkdir $GOPATH
         export PATH=$GOPATH/bin:$PATH
         go get -u github.com/golang/protobuf/protoc-gen-go
+        sudo pip install grpcio grpcio-tools
         ./bootstrap.sh
         ./configure
         make
-        sudo make install
         sudo pip install -e .
         popd
     fi
@@ -53,7 +51,7 @@ function install_oaktreemodel {
 function install_oaktree {
     if use_library_from_git "oaktree"; then
         GITREPO["oaktree"]=$OAKTREE_REPO_URL
-        GITDIR["oaktree"]=$DEST/shade
+        GITDIR["oaktree"]=$DEST/oaktree
         GITBRANCH["oaktree"]=$OAKTREE_REPO_REF
         git_clone_by_name "oaktree"
         setup_dev_lib "oaktree"
@@ -92,6 +90,8 @@ if is_service_enabled oaktree; then
     if [[ "$1" == "stack" && "$2" == "install" ]]; then
         # Perform installation of service source
         echo_summary "Installing oaktree"
+        install_shade
+        install_oaktreemodel
         install_oaktree
 
     elif [[ "$1" == "stack" && "$2" == "post-config" ]]; then

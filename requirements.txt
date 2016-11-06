@@ -5,4 +5,4 @@
 pbr>=1.6
 oaktreemodel
 shade>=1.12.0
-grpc
+grpcio
