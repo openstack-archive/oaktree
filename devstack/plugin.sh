@@ -43,9 +43,8 @@ function install_oaktreemodel {
         ./bootstrap.sh
         ./configure
         make
-        sudo make install
-        sudo pip install -e .
         popd
+        setup_dev_lib "oaktreemodel"
     fi
 }
 
