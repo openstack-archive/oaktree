@@ -13,7 +13,9 @@ Contents:
 
    readme
    installation
-   usage
+   design
+   faq
+   todo
    contributing
 
 Indices and tables
