@@ -175,8 +175,8 @@ class OaktreeServicer(oaktree_pb2.OaktreeServicer):
                 name_or_id=request.name_or_id,
                 filters=request.jmespath))
 
-    def SearchFlavors(self, request, context):
-        logging.info('searching flavors')
+    def ListFlavors(self, request, context):
+        logging.info('listing flavors')
         cloud = _get_cloud(request)
         return convert_flavors(
             cloud.search_flavors(
@@ -191,8 +191,8 @@ class OaktreeServicer(oaktree_pb2.OaktreeServicer):
                 name_or_id=request.name_or_id,
                 filters=request.jmespath))
 
-    def SearchImages(self, request, context):
-        logging.info('searching images')
+    def ListImages(self, request, context):
+        logging.info('listing images')
         cloud = _get_cloud(request)
         return convert_images(
             cloud.search_images(
@@ -207,8 +207,8 @@ class OaktreeServicer(oaktree_pb2.OaktreeServicer):
                 name_or_id=request.name_or_id,
                 filters=request.jmespath))
 
-    def SearchSecurityGroups(self, request, context):
-        logging.info('searching security groups')
+    def ListSecurityGroups(self, request, context):
+        logging.info('listing security groups')
         cloud = _get_cloud(request)
         return convert_security_groups(
             cloud.search_security_groups(
@@ -223,8 +223,8 @@ class OaktreeServicer(oaktree_pb2.OaktreeServicer):
                 name_or_id=request.name_or_id,
                 filters=request.jmespath))
 
-    def SearchSecurityGroupRules(self, request, context):
-        logging.info('searching security group rules')
+    def ListSecurityGroupRules(self, request, context):
+        logging.info('listing security group rules')
         cloud = _get_cloud(request)
         return convert_security_group_rules(
             cloud.search_security_group_rules(

@@ -15,7 +15,7 @@ if len(sys.argv) > 1:
 else:
     cloud.cloud = 'devstack'
 
-flavors = stub.SearchFlavors(model.Filter(location=cloud))
+flavors = stub.ListFlavors(model.Filter(location=cloud))
 print flavors
-images = stub.SearchImages(model.Filter(location=cloud))
+images = stub.ListImages(model.Filter(location=cloud))
 print images
