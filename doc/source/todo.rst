@@ -43,6 +43,28 @@ order:
 #. API surface needed for existing Ansible modules
 #. Everything else
 
+The API surface needed for nodepool is:
+
+  list_flavors
+
+  create_image
+  delete_image
+  get_image
+  list_images
+
+  create_keypair
+  delete_keypair
+  list_keypairs
+
+  create_server
+  delete_server
+  get_server
+  list_servers
+
+  // These two require the most thought
+  wait_for_server
+  delete_unattached_floating_ips
+
 Implement oaktree backend in shade
 ----------------------------------
 
