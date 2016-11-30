@@ -8,7 +8,7 @@ oaktree is a gRPC interface for interacting with OpenStack clouds that is
 inherently interoperable and multi-cloud aware. It is based on the python
 shade library, which grew all of the logic needed to interact with OpenStack
 clouds and to work around differences in vendor deployment choices. Rather
-than keep all of that love in Python Library form, oaktree allows othre
+than keep all of that love in Python Library form, oaktree allows other
 languages to reap the benefits as well.
 
 oaktree is not a replacement for all of the individual project REST APIs.
