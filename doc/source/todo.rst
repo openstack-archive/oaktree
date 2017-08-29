@@ -2,6 +2,12 @@
 Work Needed
 ===========
 
+Build Zuul v3 Jobs
+------------------
+
+oaktree and oaktreemodel have some gate jobs that do things like build go
+which can take advantage of the new Zuul v3 go-friendly source layout.
+
 Design the auth story
 ---------------------
 
