@@ -1,0 +1,21 @@
+- project:
+    name: openstack/oaktree
+    check:
+      jobs:
+        - oaktree-dsvm-functional
+    gate:
+      queue: oaktree
+      jobs:
+        - oaktree-dsvm-functional
+
+- job:
+    name: oaktree-dsvm-functional
+    parent: legacy-dsvm-base
+    run: playbooks/legacy/oaktree-dsvm-functional/run
+    post-run: playbooks/legacy/oaktree-dsvm-functional/post
+    timeout: 4200
+    required-projects:
+      - openstack-infra/devstack-gate
+      - openstack-infra/shade
+      - openstack/oaktree
+      - openstack/oaktreemodel
